@@ -18,6 +18,7 @@ In case of SINUS Devices:
 if sync order of pci cards should be specified use
 bokeh serve --show Measurement_App --args --device=typhoon --syncorder SerialNb1 SerialNb2 ...
 """
+import acoular
 import sys
 import os
 from bokeh.models.widgets.inputs import NumericInput
@@ -116,7 +117,7 @@ if DEVICE == 'sounddevice':
     import sounddevice as sd
     inputSignalGen = get_interface(DEVICE)
     ch_names = [str(_) for _ in range(inputSignalGen.numchannels)]
-    micGeo = MicGeom(from_file = '')
+    micGeo = MicGeom(from_file = os.path.join(os.path.split(acoular.__file__)[0], 'xml', 'minidsp_uma16.xml'))
     grid = RectGrid()
 elif DEVICE == 'phantom':
     micGeo = MicGeom(from_file = os.path.join(MGEOMPATH,'array_64.xml'))
@@ -216,6 +217,7 @@ ti_savename = TextInput(value="", title="Filename:",disabled=True)
 geomviewlabels= ["Back View", "Front View"]
 geomview = RadioGroup(labels=geomviewlabels, active=0)
 def update_micgeom_view(attr,old,new):
+    print("mpos", micGeo.mpos)
     if new == 0: # BackView
         MicGeomCDS.data['x'] = micGeo.mpos[0,:]
     elif new == 1: # FrontView

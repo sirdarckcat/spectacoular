@@ -19,8 +19,8 @@ with open(join(here, 'README.rst')) as f:
 install_requires = list([
       'acoular>=21.05',
       'setuptools',	
-      'bokeh >=1.3.0',
-
+      'bokeh <=1.4.0',
+      'numpy <1.22',
 	])
 
 #if "CONDA_PREFIX" not in os.environ:
@@ -29,7 +29,8 @@ install_requires = list([
 setup_requires = list([
       'acoular>=20.02',
       'setuptools',	
-      'bokeh >=1.3.0',
+      'bokeh <=1.4.0',
+      'numpy <1.22',
 	])
 
 #if "CONDA_PREFIX" not in os.environ:

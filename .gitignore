@@ -1,6 +1,7 @@
 # ignore files and file types:
 *.pyc
 *.pyd
+calibdata*
 
 # ignore directories:
 __pycache__/
@@ -8,6 +9,8 @@ cache/
 td/
 build/
 _build/
+.eggs/
+*.egg-info/
 
 apps/Measurement_App/static/two_sources_one_moving_10s.h5
 apps/Measurement_App/data/
@@ -19,3 +22,4 @@ docs/
 copy_html.sh
 
 *.SEC
+record.txt
